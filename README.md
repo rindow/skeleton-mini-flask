@@ -9,12 +9,15 @@ This is an experimental project.
 
 Install
 -------
+Download this skeleton and the PyRindow 0.1.x from [release page](https://github.com/rindow/pyrindow-framework/releases)
+
 Copy the library and set the path.
+Please see the loader.py in the vendor directory
 
 Requirements
 ------------
 - Python 2.7
 - PyRindow Framework 0.1.x
-- Flask
+- Flask 0.10
 - Jinja2
 - Google Cloud App Engine Standard Enviroment(Python2.7)
