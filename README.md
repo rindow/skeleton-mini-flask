@@ -18,6 +18,6 @@ Requirements
 ------------
 - Python 2.7
 - PyRindow Framework 0.1.x
-- Flask 0.10
-- Jinja2
+- Flask 0.12
+- Jinja2 2.6
 - Google Cloud App Engine Standard Enviroment(Python2.7)
