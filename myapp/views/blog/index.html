@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="flex justify-between items-end m2 border-bottom border-gray">
+    <h2 class="h2 m0 p0 left">{% block title %}Posts{% endblock %}</h2>
+    {% if g.user %}
+    <div class="mb1 mr2 right"><a href="{{ url_for('blog.create') }}">New</a></div>
+    {% endif %}
+</div><!--div class="clearfix"-->
+{% endblock %}
+
+{% block content %}
+<div class="clearfix ml2 mr2 mb2">
+    {% for post in posts %}
+    <article class="clearfix border-bottom border-gray">
+        <header class="col col-12">
+            <h3 class="h3 m1">{{ post.title }}</h3>
+            <span class="inline-block italic left ml1 gray">by {{ post.author.username }} on {{ post.created.strftime('%Y-%m-%d') }}</span>
+            {% if g.user.id == post.author_id %}
+              <a class="inline-block right mr2" href="{{ url_for('blog.update', id=post.id) }}">Edit</a>
+            {% endif %}
+        </header>
+        <div class="col col-12 mb1">
+            <p class="m1">{{ post.body }}</p>
+        </div>
+    </article>
+    {% endfor %}
+</div><!--div class="clearfix"-->
+{% endblock %}

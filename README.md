@@ -16,8 +16,8 @@ Please see the loader.py in the vendor directory
 
 Requirements
 ------------
-- Python 2.7
-- PyRindow Framework 0.1.x
+- Python 3.7
+- PyRindow Framework 0.2.x
 - Flask 0.10
 - Jinja2
 - Google Cloud App Engine Standard Enviroment(Python2.7)

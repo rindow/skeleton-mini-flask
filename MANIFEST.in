@@ -1,0 +1,4 @@
+recursive-exclude tests *.py
+graft myapp/static
+graft myapp/views
+global-exclude *.pyc

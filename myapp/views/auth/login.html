@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="flex justify-between items-end m2 border-bottom border-gray">
+    <h2 class="h2 m0 p0 left">{% block title %}Login{% endblock %}</h2>
+</div><!--div class="clearfix"-->
+{% endblock %}
+
+{% block content %}
+<div class="clearfix ml2 mr2 mb2">
+    <form class="m1" method="post">
+        {{ form.hidden_tag() }}
+        <label class="label" for="username">Username</label>
+        <input class="input" name="username" id="username"{% if form.username.data %} value="{{ form.username.data }}"{% endif %} required>
+        <label class="label" for="password">Password</label>
+        <input class="input" type="password" name="password" id="password" required>
+        <label class="block col-12 mb2">
+            <input name="remember" type="checkbox" value="remember-me"{% if form.remember.data %} checked{% endif %}> Remember me
+        </label>
+        <input class="btn btn-outline blue" type="submit" value="Login">
+    </form>
+</div><!--div class="clearfix"-->
+{% endblock %}

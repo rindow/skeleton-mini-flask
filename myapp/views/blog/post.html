@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="flex justify-between items-end m2 border-bottom border-gray">
+    <h2 class="h2 m0 p0 left">{% block title %}{% if post.id %}Edit "{{ post.title }}"{% else %}New Post{% endif %}{% endblock %}</h2>
+</div><!--div class="clearfix"-->
+{% endblock %}
+
+{% block content %}
+<div class="clearfix m1">
+<form class="m1"
+{% if post.id %}
+    action="{{ url_for('blog.update', id=post.id) }}"
+{% else %}
+    action="{{ url_for('blog.create') }}"
+{% endif %}
+    method="post">
+    {{ form.hidden_tag() }}
+    <label class="label" for="title">Title</label>
+    <input class="input" type="text" name="title" id="title"{% if form.title.data %} value="{{ form.title.data }}{% endif %}">
+    <label class="label" for="body">Body</label>
+    <textarea class="textarea" name="body" id="body" rows="8" cols="80">{% if form.body.data %}{{ form.body.data }}{% endif %}</textarea>
+    <input class="btn btn-outline blue" type="submit" name="post" value="Post">
+</form>
+{% if post.id %}
+<hr>
+<form action="{{ url_for('blog.delete', id=post.id) }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input class="btn btn-outline red" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+</form>
+{% endif %}
+</div><!--div class="clearfix"-->
+{% endblock %}

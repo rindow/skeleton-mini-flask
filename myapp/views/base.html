@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Blog{% endblock %} - Myapp</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='ace.min.css') }}">
+    </head>
+    <body>
+        <nav class="flex justify-between items-end bg-gray white m0 p1">
+            <h1 class="h1 inline-block m0 p0">Myapp</h1>
+            <ul class="list-reset inline-block m0 p0">
+            {% if g.user %}
+                <li class="inline-block mr1"><span>{{ g.user.username }}</span>
+                <li class="inline-block mr1"><a href="{{ url_for('auth.logout') }}">Log Out</a>
+            {% else %}
+                <li class="inline-block mr1"><a href="{{ url_for('auth.register') }}">Register</a>
+                <li class="inline-block mr1"><a href="{{ url_for('auth.login') }}">Log In</a>
+            {% endif %}
+            </ul>
+        </nav>
+
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        <div class="ml2 mr2 overflow-hidden rounded">
+        {% macro category_colors(category) %}
+            {% set categories = {'primary':'bg-blue', 'secondary':'bg-gray', 'success':'bg-green', 'danger':'bg-red', 'warning':'bg-yellow', 'info':'bg-teal', 'light':'bg-silver', 'dark':'bg-black'} %}
+            {{ categories.get(category, 'bg-blue') }}
+        {% endmacro %}
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category, message in messages %}
+            <div class="p2 bold white {{ category_colors(category) }}">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
+        </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>
