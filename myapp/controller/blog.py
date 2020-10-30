@@ -4,7 +4,8 @@ from flask_login import login_required, current_user, AnonymousUserMixin
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
 from wtforms.validators import InputRequired
-from myapp.model.blog import postManager
+#from myapp.model.blog import postManager
+postManager = None
 
 route = Blueprint('blog', __name__, template_folder='../views')
 

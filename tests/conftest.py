@@ -3,7 +3,6 @@ import pytest
 from werkzeug.security import generate_password_hash, check_password_hash
 from myapp import create_app
 from myapp import config
-from myapp.entity.auth import User
 
 @pytest.fixture
 def app():
@@ -15,6 +14,7 @@ def app():
 
 @pytest.fixture
 def client(app):
+    from myapp.entity.auth import User
     config.database.db.drop_all()
     config.database.db.create_all()
     with app.app_context():

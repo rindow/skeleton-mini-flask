@@ -1,5 +1,5 @@
-from myapp.config.database import db
 from datetime import datetime
+from myapp.config.database import db
 
 class Post(db.Model):
     __tablename__ = 'post'

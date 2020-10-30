@@ -1,5 +1,5 @@
-from myapp.config.database import db
 from flask_login import UserMixin
+from myapp.config.database import db
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'

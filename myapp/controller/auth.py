@@ -4,7 +4,8 @@ from flask_login import login_user, logout_user, login_required
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length, EqualTo
-from myapp.model.auth import userManager
+# from myapp.model.auth import userManager
+userManager = None
 
 route = Blueprint('auth', __name__, template_folder='../views')
 
